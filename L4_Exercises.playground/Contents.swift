@@ -93,27 +93,49 @@ if myMove == .Rock && yourMove == .Paper || myMove == .Paper && yourMove == .Roc
 var score = 97
 var letterGrade = ""
 
-if 90...100 ~= score {
+
+//if 90...100 ~= score {
+//    letterGrade = "A"
+//} else if 80...89 ~= score {
+//    letterGrade = "B"
+//} else if 70...79 ~= score {
+//    letterGrade = "C"
+//} else if 60...69 ~= score {
+//    letterGrade = "D"
+//} else {
+//    letterGrade = "Incomplete"
+//}
+
+switch score {
+case 90...100:
     letterGrade = "A"
-} else if 80...89 ~= score {
+case 80...89:
     letterGrade = "B"
-} else if 70...79 ~= score {
+case 70...79:
     letterGrade = "C"
-} else if 60...69 ~= score {
+case 60...69:
     letterGrade = "D"
-} else {
-    letterGrade = "Incomplete"
+default:
+    println("Incomplete")
 }
 //: ### Exercise 8
 //: The if-else statement below translates a word into Pig Latin. Without using the "vowels" array, write an equivalent switch statement.
-var word = "can"
-var firstLetter = Array(word.characters)[0]
+var word = "each"
+var firstLetter = Array(word)[0]
 var newWord = ""
 var vowels: [Character] = ["a", "e", "i", "o", "u"]
 
-if vowels.contains(firstLetter) {
-    newWord = word + "yay"
-} else {
-    word.removeAtIndex(word.startIndex)
-    newWord = "\(word)\(firstLetter)ay"
+switch firstLetter {
+    case "a", "e", "i", "o", "u":
+        newWord = word + "yay"
+    default:
+        word.removeAtIndex(word.startIndex)
+        newWord = "\(word)\(firstLetter)ay"
 }
+
+//if vowels.contains(firstLetter) {
+//    newWord = word + "yay"
+//} else {
+//    word.removeAtIndex(word.startIndex)
+//    newWord = "\(word)\(firstLetter)ay"
+//}
