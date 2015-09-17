@@ -74,19 +74,33 @@ enum roshamboMove {
 }
 
 var myMove = roshamboMove.Scissors
-var yourMove = roshamboMove.Scissors
+var yourMove = roshamboMove.Rock
 
 var resultsMessage = ""
 
-if myMove == .Rock && yourMove == .Paper || myMove == .Paper && yourMove == .Rock {
+switch (myMove, yourMove) {
+case (.Rock, .Paper), (.Paper, .Rock):
     resultsMessage = "Paper covers Rock."
-} else if myMove == yourMove {
+case (.Rock, .Rock), (.Paper, .Paper), (.Scissors, .Scissors):
     resultsMessage = "It's a tie!"
-} else if myMove == .Rock && yourMove == .Scissors || myMove == .Scissors && yourMove == .Rock {
+case (.Rock, .Scissors), (.Scissors, .Rock):
     resultsMessage = "Rock crushes Scissors. "
-} else if myMove == .Paper && yourMove == .Scissors || myMove == .Scissors && yourMove == .Paper {
+case (.Paper, .Scissors), (.Scissors, .Paper):
     resultsMessage = "Scissors cut Paper."
+default:
+    println("Error")
 }
+println(resultsMessage)
+
+//if myMove == .Rock && yourMove == .Paper || myMove == .Paper && yourMove == .Rock {
+//    resultsMessage = "Paper covers Rock."
+//} else if myMove == yourMove {
+//    resultsMessage = "It's a tie!"
+//} else if myMove == .Rock && yourMove == .Scissors || myMove == .Scissors && yourMove == .Rock {
+//    resultsMessage = "Rock crushes Scissors. "
+//} else if myMove == .Paper && yourMove == .Scissors || myMove == .Scissors && yourMove == .Paper {
+//    resultsMessage = "Scissors cut Paper."
+//}
 
 //: ### Exercise 7
 //: Below is an if-else statement matching an assignment score to a letter grade.
